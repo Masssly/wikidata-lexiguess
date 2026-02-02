@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikidata LexiGuess - A Lexicographical Word Game</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Wikidata LexiGuess</h1>
+        <p class="subtitle">Guess the word using lexicographical data from Wikidata</p> <!-- NEW: Updated subtitle -->
+    </header>
+
+    <div class="language-selector">
+        <label for="languageSelect">Choose Language:</label>
+        <select id="languageSelect">
+            <option value="dag">Dagbani (dag)</option>
+            <!-- Add more options as needed -->
+        </select>
+    </div>
+
+    <!-- NEW: Difficulty Selector -->
+    <div class="difficulty-selector">
+        <label for="difficultySelect">Choose Difficulty:</label>
+        <select id="difficultySelect">
+            <option value="beginner">Beginner (1-3 letters)</option>
+            <option value="easy" selected>Easy (4-5 letters)</option> <!-- Set Easy as default -->
+            <option value="medium">Medium (6-7 letters)</option>
+            <option value="hard">Hard (8-10 letters)</option>
+            <option value="expert">Expert (11+ letters)</option>
+        </select>
+    </div>
+
+    <!-- NEW: Improved How To Play Section -->
+    <div class="how-to-play-section">
+        <button id="howToPlayBtn" class="info-btn">
+            <span>How To Play</span>
+            <span class="arrow">▼</span>
+        </button>
+        <div id="howToPlayContent" class="info-content hidden">
+            <h3>How to Play Wikidata LexiGuess</h3>
+            <p>1. Select your preferred language and difficulty level.</p>
+            <p>2. A word from Wikidata will be chosen based on your language and difficulty settings.</p>
+            <p>3. Guess the word by typing it in the input box and clicking "Submit Guess".</p>
+            <p>4. Alternatively, guess letters one by one. Correct letters will appear in the word display.</p>
+            <p>5. Use the hint buttons to reveal helpful information or letters. Each hint costs points!</p>
+            <p>6. You have a limited number of lives. Guess correctly before you run out of lives!</p>
+        </div>
+    </div>
+
+    <!-- NEW: About Section -->
+    <div class="about-section">
+        <button id="aboutBtn" class="info-btn">
+            <span>About</span>
+            <span class="arrow">▼</span>
+        </button>
+        <div id="aboutContent" class="info-content hidden">
+            <h3>About Wikidata LexiGuess</h3>
+            <p>This game uses lexicographical data from Wikidata Lexemes.</p>
+            <p><strong>Creator:</strong> Your Name</p>
+            <p><strong>Contact:</strong> your.email@example.com</p>
+            <p><strong>Repository:</strong> <a href="https://github.com/yourusername/your-repo" target="_blank">GitHub Link</a></p>
+            <!-- Add more details as needed -->
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="game-info">
+            <div>Lives: <span id="lives">6</span></div>
+            <div>Score: <span id="score">0</span></div>
+        </div>
+
+        <div class="word-display" id="wordDisplay">_ _ _ _ _</div>
+
+        <!-- NEW: Hint area will now show a prompt when no hints are active -->
+        <div class="hint" id="dynamicHintArea">Use hint buttons to reveal information.</div>
+
+        <!-- NEW: Dedicated Hints section to show revealed hints vertically -->
+        <div class="hints-section">
+            <h4>Hints:</h4>
+            <div id="revealedHintsContainer"></div>
+        </div>
+
+        <!-- NEW: Lexeme Details section now just holds placeholders for end-game display -->
+        <div class="details" id="endGameDetails">
+            <span id="grammaticalFeatures">Grammatical Features: -</span><br>
+            <span id="translations">Translations: -</span><br>
+            <span id="pronunciation">Pronunciation: -</span><br>
+            <span id="images">Images: -</span>
+            <span id="lexicalCategory">Lexical Category: -</span>
+        </div>
+
+        <div class="language-info">
+            Language: <span id="languageDisplay">Dagbani</span> (<span id="languageCodeDisplay">dag</span>)
+        </div>
+
+        <input type="text" class="guess-input" id="guessInput" placeholder="Enter your guess..." maxlength="50">
+
+        <div class="buttons">
+            <button id="submitBtn">Submit Guess</button> <!-- Ensure this ID exists -->
+            <!-- NEW: Replace single hint button with multiple hint buttons -->
+            <div class="hint-buttons">
+                <button id="getDefinitionHintBtn">Get Definition (-5)</button>
+                <button id="getLetterHintBtn">Get Letter (-3)</button>
+                <button id="getGrammaticalHintBtn">Get Grammar (-7)</button>
+                <button id="getLexicalCategoryHintBtn">Get Category (-6)</button> <!-- NEW: Add lexical category button -->
+                <button id="getImageHintBtn">Get Image (-10)</button> <!-- NEW: Add image button -->
+            </div>
+            <button id="newGameBtn">New Game</button>
+        </div>
+
+        <div id="feedback"></div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-value" id="gamesPlayed">0</div>
+                <div class="stat-label">Games Played</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="gamesWon">0</div>
+                <div class="stat-label">Games Won</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="winRate">0%</div>
+                <div class="stat-label">Win Rate</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>This game uses lexicographical data from Wikidata Lexemes.</p>
+    </footer>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
