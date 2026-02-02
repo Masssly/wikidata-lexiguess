@@ -1,0 +1,373 @@
+/* --- CSS STYLES --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #7f8c8d;
+    font-size: 1.1em;
+}
+
+.language-selector {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.language-selector label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.language-selector select {
+    padding: 8px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* NEW: Style for the new difficulty selector, similar to language selector */
+.difficulty-selector {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.difficulty-selector label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.difficulty-selector select {
+    padding: 8px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* NEW: Improved styles for info sections (How To Play, About) */
+.info-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info-btn {
+    background-color: #9b59b6; /* Purple color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    display: flex; /* Use flexbox for arrow alignment */
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between text and arrow */
+    width: 100%; /* Full width for consistency */
+    max-width: 300px; /* Limit width */
+    margin: 0 auto; /* Center the button */
+}
+
+.info-btn:hover {
+    background-color: #8e44ad; /* Darker purple on hover */
+}
+
+.arrow {
+    transition: transform 0.3s ease; /* Smooth rotation animation */
+    font-size: 0.8em; /* Smaller arrow */
+}
+
+.info-btn.active .arrow {
+    transform: rotate(180deg); /* Flip arrow when active */
+}
+
+.info-content {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 0.95em;
+    /* NEW: Add subtle shadow and animation */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-height: 300px; /* Limit height */
+    overflow-y: auto; /* Add scrollbar if content overflows */
+}
+
+.info-content h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.info-content a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.info-content a:hover {
+    text-decoration: underline;
+}
+
+.game-container {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.word-display {
+    font-size: 2em;
+    text-align: center;
+    margin: 20px 0;
+    letter-spacing: 5px;
+    color: #2980b9;
+    min-height: 60px;
+    font-family: monospace; /* Good for displaying letters clearly */
+}
+
+.guess-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2em;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin: 15px 0;
+    box-sizing: border-box;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    justify-content: space-between; /* Space out buttons */
+    align-items: center; /* Align items vertically */
+}
+
+/* NEW: Style for the container of multiple hint buttons */
+.hint-buttons {
+    display: flex;
+    gap: 5px; /* Smaller gap between hint buttons */
+    flex-wrap: wrap; /* Allow hint buttons to wrap */
+    justify-content: center; /* Center hint buttons if they wrap */
+}
+
+/* NEW: Style for individual hint buttons */
+.hint-buttons button {
+    flex: 1; /* Allow buttons to grow */
+    min-width: 80px; /* Minimum width for hint buttons */
+    padding: 8px 5px; /* Smaller padding */
+    font-size: 0.9em; /* Slightly smaller font */
+    background-color: #e67e22; /* Orange color for hints */
+}
+
+.hint-buttons button:hover:not(:disabled) {
+    background-color: #d35400; /* Darker orange on hover */
+}
+
+button {
+    flex: 1;
+    min-width: 120px; /* Ensure buttons have a minimum width */
+    padding: 12px;
+    font-size: 1em;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.hint {
+    background-color: #eaf2f8;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+    font-style: italic;
+    /* NEW: Make hint area more prominent */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* NEW: Style for the hints section */
+.hints-section {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f8f9fa; /* Light background */
+    border-left: 4px solid #27ae60; /* Green border */
+    border-radius: 0 5px 5px 0; /* Rounded corners */
+}
+
+.hints-section h4 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1em;
+}
+
+#revealedHintsContainer {
+    /* NEW: Style for the container holding the hints */
+    /* Each hint will be a div inside this */
+}
+
+#revealedHintsContainer div {
+    /* NEW: Style for each individual hint line */
+    margin: 5px 0;
+    padding: 2px 0;
+    font-size: 0.95em;
+}
+
+/* NEW: Style for images in hints */
+#revealedHintsContainer img {
+    max-width: 200px; /* Limit image size */
+    display: block; /* Stack images vertically */
+    margin: 5px 0;
+}
+
+#revealedHintsContainer a {
+    display: block; /* Make link appear below image */
+    font-size: 0.8em; /* Smaller link text */
+    color: #3498db; /* Link color */
+    text-decoration: none;
+}
+
+#revealedHintsContainer a:hover {
+    text-decoration: underline;
+}
+
+.feedback {
+    text-align: center;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.correct {
+    background-color: #d5f5e3;
+    color: #27ae60;
+}
+
+.incorrect {
+    background-color: #fadbd8;
+    color: #c0392b;
+}
+
+/* NEW: Style for the end-game details section */
+#endGameDetails {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-left: 4px solid #9b59b6; /* Different color for details */
+    margin: 15px 0;
+    border-radius: 0 5px 5px 0;
+    font-size: 0.9em;
+    /* NEW: Initially hidden */
+    display: none;
+}
+
+#endGameDetails h4 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+#endGameDetails img {
+    max-width: 150px; /* Smaller size for end-game */
+    display: block;
+    margin: 5px 0;
+}
+
+#endGameDetails a {
+    font-size: 0.8em; /* Smaller link text */
+    color: #3498db; /* Link color */
+    text-decoration: none;
+}
+
+#endGameDetails a:hover {
+    text-decoration: underline;
+}
+
+.language-info {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.stat-box {
+    padding: 10px;
+}
+
+.stat-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #7f8c8d;
+}
+
+.error {
+    background-color: #fadbd8;
+    color: #c0392b;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+
+/* NEW: Class for hiding elements */
+.hidden {
+    display: none;
+}
